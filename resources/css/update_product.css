@@ -1,0 +1,22 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.form-group span {
+  margin: 0 20px;
+  font-size: 20px;
+}
+#file {
+  border: none;
+  padding: 0;
+  outline: none;
+  width: 370px;
+  cursor: pointer;
+}
+#price_of {
+  margin-right: 10px;
+}
+#price_new {
+  margin-left: 10px;
+}
