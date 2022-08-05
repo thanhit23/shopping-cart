@@ -1,34 +1,31 @@
 version: '3.8'
 services:
-  php-apache-2:
-    container_name: php-apache-two
+  app:
+    container_name: shopping-cart-app
     build:
       context: ./docker
       dockerfile: Dockerfile
-    depends_on:
-      - db
     volumes:
       - ./:/var/www/html/
     ports:
       - 80:80
-    links:
-      - db
   db:
+    container_name: shopping-cart-db
     image: mysql
     platform: linux/x86_64
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: db2
+      MYSQL_DATABASE: shopping_cart
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     volumes:
-      - "react_insta_db_data:/var/lib/mysql"
+      - db_data:/var/lib/mysql
+      - ./docker/db/init:/docker-entrypoint-initdb.d/:ro
   phpmyadmin:
+    container_name: shopping-cart-phpmyadmin
     image: phpmyadmin:latest
-    links:
-      - db
     environment:
-      PMA_HOST: db2
+      PMA_HOST: db
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     ports:
@@ -37,4 +34,4 @@ services:
       - db
 
 volumes:
-    react_insta_db_data:
+  db_data:
