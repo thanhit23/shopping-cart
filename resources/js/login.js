@@ -20,7 +20,6 @@ btnSignIn.addEventListener('click', () => {
   const errorMessage = document.querySelector('.error-message-form');
   formData.append('email', email.value);
   formData.append('password', password.value);
-
   fetch(route.checkAuthorized, {method: 'POST', body: formData})
     .then(data => data.json())
     .then(data => {

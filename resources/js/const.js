@@ -7,4 +7,7 @@ var route = {
   addCart: `${BASE_URL}/add_cart.php`,
   logOut: `${BASE_URL}/log_out.php`,
   addPreSelectProductsCart: `${BASE_URL}/add_preSelect_product.php`,
+  buyProduct: `${BASE_URL}/buy-products.php`,
+  pagination: `${BASE_URL}/pagination.php`,
+  delete: `${BASE_URL}/delete_product.php`,
 };

@@ -1,11 +1,10 @@
 <?php
   session_start();
-  require('../../dbConnection.php');
+  require($_SERVER['DOCUMENT_ROOT'] . '/dbConnection.php');
   $id_product = $_GET;
   $id = (int)$id_product["id"];
   $sql = "SELECT id, name, src, price, percentage, quantity_sold FROM products WHERE id = $id";
   $result = $conn->query($sql);
-
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $id = $row['id'];
@@ -17,8 +16,6 @@
     $percentage = $row["percentage"];
     $quantitySold = $row["quantity_sold"];
     $quantity_purchased = 1;
-  } else {
-    echo "0 results";
   }
 ?>
 <!DOCTYPE html>
@@ -26,6 +23,8 @@
   <head>
     <?php require("../templates/includes/head.php")  ?>
     <link rel="stylesheet" href="/resources/css/product_detail.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
     <?php require ("../templates/includes/header.php")  ?>

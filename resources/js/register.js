@@ -173,7 +173,7 @@ submitElement.addEventListener('click', (e) => {
       .then(data => data.json())
       .then(data => {
         if (data.status === true) {
-          console.log(data);
+          addPreProduct();
         } else {
           const errorMessage = emailElement.parentElement.querySelector('.form-message');
           emailElement.parentElement.classList.add('invalid');
@@ -181,12 +181,23 @@ submitElement.addEventListener('click', (e) => {
         }
       });
 
-    // fetch(route.addPreSelectProductsCart, { method: 'POST', body: formData })
-    //   .then(data => data.json())
-    //   .then(data => {
-    //     if (data.status === true) {
-    //       window.location = 'http://localhost/pages/home/index.php';
-    //     }
-    //   });
+    function addPreProduct() {
+      const url_string = window.location.href; 
+      const url = new URL(url_string);
+      const idProductAdded = url.searchParams.get("idProductAdded");
+      const quantity = url.searchParams.get("quantity");
+      console.log(idProductAdded, 'idProductAdded');
+      console.log(quantity, 'quantity');
+      formData.append('idProductAdded', idProductAdded)
+      formData.append('quantity', quantity)
+      fetch(route.addPreSelectProductsCart, { method: 'POST', body: formData })
+            .then(data => data.json())
+            .then(data => {
+              if (data.status === true) {
+                // window.location = 'http://localhost/home';
+              }
+            });
+    }
+    
   }
 })

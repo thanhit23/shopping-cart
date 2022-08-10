@@ -27,7 +27,7 @@
                 </div>
             </div>
             <?php 
-            $sql = "SELECT * FROM `products`";
+            $sql = "SELECT * FROM `products` limit 12";
             $result = $conn->query($sql);
             ?>
             <table class="table" border="1" id="sampleTable">

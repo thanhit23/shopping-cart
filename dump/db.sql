@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db:3306
--- Generation Time: Jul 21, 2022 at 03:57 AM
+-- Generation Time: Aug 09, 2022 at 01:30 PM
 -- Server version: 8.0.29
 -- PHP Version: 8.0.20
 
@@ -24,6 +24,61 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `id_product` int NOT NULL,
+  `id_user` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `quantity`, `id_product`, `id_user`) VALUES
+(1, 7, 2, 2),
+(2, 3, 9, 0),
+(3, 7, 2, 28),
+(5, 3, 9, 2),
+(6, 1, 10, 2),
+(7, 1, 8, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE `invoice` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `total` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `create_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`id`, `user_id`, `total`, `create_at`) VALUES
+(2, 2, '385,000', '2022-08-09 13:28:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_item`
+--
+
+CREATE TABLE `invoice_item` (
+  `id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -33,14 +88,14 @@ CREATE TABLE `products` (
   `src` text NOT NULL,
   `price` text NOT NULL,
   `percentage` int NOT NULL,
-  `quantitySold` text NOT NULL
+  `quantity_sold` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`Id`, `name`, `src`, `price`, `percentage`, `quantitySold`) VALUES
+INSERT INTO `products` (`Id`, `name`, `src`, `price`, `percentage`, `quantity_sold`) VALUES
 (1, 'Quần short jean nữ lưng cao phối nút cài 2 bên hông - J02', '[\"https://cf.shopee.vn/file/905c2ba722dd8a9ba3b9f82fba90ae50_tn\",\"https://cf.shopee.vn/file/520ef9a95fbe27f8758d95f9ef86fe60\",\"https://cf.shopee.vn/file/91706c886d5397a5783776d1c891bc6c\",\"https://cf.shopee.vn/file/33ec232793566f67aeecf3a4d0017bdc\",\"https://cf.shopee.vn/file/376114d806f5d80b48cb45d9935826f2\"]', '{\"price_of\":\"125.000\",\"price_new\":\"75.000\"}', 40, '2'),
 (2, 'Dép đi trong nhà [Lù Store ] Dép bánh mì hình chibi dễ thương, 3 màu đen, cam, kem, size từ 36-40', '[\"https://cf.shopee.vn/file/fc4863a6a34872f738a90951680fa61d\",\"https://cf.shopee.vn/file/843cfb7e6d7dd349b49db0e895c74342\",\"https://cf.shopee.vn/file/56951295c29a63fef5bcdad9884fb993\",\"https://cf.shopee.vn/file/64a5d56ba55823f3abdee40665b892c7\",\"https://cf.shopee.vn/file/0b4bc7129d4717eeabaa0f8fd8cf9a6e\"]', '{\"price_of\": \"90.000\",\"price_new\": \"55.000\"}', 40, '2'),
 (3, 'Áo trễ vai tay phồng chun ngực chun tay, áo kiểu bánh bèo', '[\"https://cf.shopee.vn/file/d05a702cc77514080b1ac274556e1c30_tn\",\"https://cf.shopee.vn/file/9f144917aa2b640bd37272303a245e06\",\"https://cf.shopee.vn/file/742811b0427e1befea3255349e5b7ea0\",\"https://cf.shopee.vn/file/07df4486e139d6b80be87071b1998967\",\"https://cf.shopee.vn/file/11cc39a5f7a54a76c0b887127906ee00\"]', '{\"price_of\": \"69.000 - 109.000\",\"price_new\": \"68.000\"}', 37, '691'),
@@ -54,9 +109,46 @@ INSERT INTO `products` (`Id`, `name`, `src`, `price`, `percentage`, `quantitySol
 (11, 'Quần jean nữ ống rộng chất đẹp JS03 Hexany, Quần jeans nữ ống rộng dáng suông phong cách Hàn Quốc', '[\r\n      \"https://cf.shopee.vn/file/a3fa47bc9e2c24dea394162a603d9abd_tn\",\r\n      \"https://cf.shopee.vn/file/e6e4cee180ff17d568135b76f7ef3079\",\r\n      \"https://cf.shopee.vn/file/8fdd0a692aac9cd8af06a8d0edef7b6f\",\r\n      \"https://cf.shopee.vn/file/8fdd0a692aac9cd8af06a8d0edef7b6f\",\r\n      \"https://cf.shopee.vn/file/bb62d62bcb181f7d0d6dcf922770a618\"\r\n    ]', '{\r\n      \"price_of\": \"43.600 - 218.000\",\r\n      \"price_new\": \"21.800\"\r\n    }', 50, '1,2k'),
 (12, 'Dép nam và nữ đế cao 5cm cực đẹp , chất liệu EVA siêu êm mẫu mới 2021', '[\r\n      \"https://cf.shopee.vn/file/1775040a09509614468b28c116b77b94_tn\",\r\n      \"https://cf.shopee.vn/file/72437f5c8d43fd920b47390368925942\",\r\n      \"https://cf.shopee.vn/file/5a2d0e70db65ce5decff67ab90d46571\",\r\n      \"https://cf.shopee.vn/file/8fe1e77b51ca5e1c02c0b7d1daad9d1e\",\r\n      \"https://cf.shopee.vn/file/0e081d9f72981c7c79ce7e7b15d86eba\"\r\n    ]', '{\r\n      \"price_of\": \"160.000\",\r\n      \"price_new\": \"83.000\"\r\n    }', 48, '5,9');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `phone_number` int NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `phone_number`, `password`) VALUES
+(1, 'Nguyễn Duy Thành', 'duythanhit203@gmail.com', 969000000, ' nhìn'),
+(2, 'Nguyễn Duy Thành', 'asdasd@gmail.com', 969067361, '57ba172a6be125cca2f449826f9980ca'),
+(26, 'Nguyễn Duy Thành', 'asdfghjklqwertyuio@gmail.com', 969067361, '57ba172a6be125cca2f449826f9980ca'),
+(27, 'Nguyễn Duy Thành', 'thanhasdasdasfadfasgf@gmail.com', 969067361, '57ba172a6be125cca2f449826f9980ca'),
+(28, 'Nguyễn Duy Thành', 'thanhasdasdasfdfasgf@gmail.com', 969067361, '57ba172a6be125cca2f449826f9980ca');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -65,14 +157,38 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `invoice`
+--
+ALTER TABLE `invoice`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

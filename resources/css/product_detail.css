@@ -6,6 +6,7 @@ body {
   margin-top: 100px;
 }
 .product-briefing {
+  box-shadow: 0 0 10px #ccc;
   display: flex;
   max-width: 1200px;
   padding: 20px;
@@ -13,11 +14,11 @@ body {
   margin: auto;
   margin-bottom: 50px;
   flex-direction: row;
+  background-color: #fff;
 }
 .product__image {
   width: 40%;
   padding: 10px;
-  box-shadow: 0 0 10px #ccc;
 }
 .image__shown {
   position: relative;
@@ -50,7 +51,6 @@ img {
   margin: auto;
   box-sizing: border-box;
   padding: 15px;
-  box-shadow: 0 0 10px #ccc;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

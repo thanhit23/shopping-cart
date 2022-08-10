@@ -1,12 +1,11 @@
 <?php
   session_start();
-  $result = ['status' => false];
+  require("../helpers/index.php");
+  response_error('Failed');
   
   if ($_POST) {
     if ($_SESSION['user'] != null) {
-      $result['status'] = true;
+      response_success();
     }
   }
-
-  echo json_encode($result);
   

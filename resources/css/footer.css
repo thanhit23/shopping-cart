@@ -50,6 +50,9 @@
   color: #666;
   text-decoration: none;
 }
+.--content-item a:hover {
+  text-decoration: none;
+}
 .item-download {
   display: flex;
   flex-direction: row;

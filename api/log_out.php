@@ -1,6 +1,6 @@
 <?php
   session_start();
+  require "../helpers/index.php";
   $_SESSION['user'] = null;
-  $_SESSION['userid'] = null;
-  $res = ['status' => true, 'message' => 'successfully', 'data' => null];
-  echo json_encode($res);
+  $_SESSION['id_user'] = null;
+  response_success();
