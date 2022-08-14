@@ -12,6 +12,7 @@ const priceOf = document.querySelector('.price-of');
 const quantitySelected = document.querySelector('.input__product--selected');
 const imageItemShow = document.querySelector('.image__shown img').src;
 const addToCart = document.querySelector('.add--cart')
+const { origin } = window.location
 
 for (let i = 0; i < imageItem.length; i++) {
   imageItem[i].addEventListener('mousemove', () => {
@@ -35,7 +36,7 @@ addToCart.addEventListener('click', (e) => {
     .then(data => data.json())
     .then(data => {
       if (!data.status) {
-        window.location.href = `http://localhost/pages/authen/register.php?idProductAdded=${id}&quantity=${inputSelected.value}`
+        window.location.href = `${origin}/pages/authen/register.php?idProductAdded=${id}&quantity=${inputSelected.value}`
       } else {
         addCart();
       }

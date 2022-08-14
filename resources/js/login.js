@@ -1,6 +1,7 @@
 const email = document.querySelector('#form-email');
 const password = document.querySelector('#form-password');
 const btnSignIn = document.querySelector('.btn-sign-in');
+const { origin } = window.location
 email.addEventListener('input', () => {
   const errorMessage = email.nextElementSibling
   const emailValue = email.value;
@@ -27,7 +28,7 @@ btnSignIn.addEventListener('click', () => {
         errorMessage.innerHTML = data.message;
         errorElement.classList.remove('active-error');
       } else {
-        window.location = 'http://localhost/home';
+        window.location = `${origin}/home`;
       }
     })
 });

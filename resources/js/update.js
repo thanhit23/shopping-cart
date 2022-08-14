@@ -1,4 +1,5 @@
 const btnSubmit = document.querySelector('.btn-submit');
+const { origin } = window.location
 
 btnSubmit.addEventListener('click', () => {
   const formData = new FormData();
@@ -14,7 +15,7 @@ btnSubmit.addEventListener('click', () => {
   formData.append('price_new', price_new);
   formData.append('percentage', percentage);
   formData.append('quantity_sold', quantity_sold);
-  fetch('http://localhost/update_product.php', {method: 'POST', body: formData})
+  fetch(`${origin}/update_product.php`, {method: 'POST', body: formData})
     .then(data => data.json())
     .then(data => {
       console.log(data);
