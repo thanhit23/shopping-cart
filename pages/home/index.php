@@ -1,5 +1,8 @@
 <?php
   session_start();
+  if (!isset($_SESSION['pageIndex'])) {
+    $_SESSION['pageIndex'] = 1;
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,12 +201,12 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
         <div class="container-pagination">
           <div class="wrapper-pagination">
             <div class="btn-pagination <?php
-              if ($_SESSION['pageIndex'] === '1') {
+              if ((int)$_SESSION['pageIndex'] === 1) {
                 echo "active-pagination";
               }
             ?>">1</div>
             <div class="btn-pagination <?php
-              if ($_SESSION['pageIndex'] === '2') {
+              if ((int)$_SESSION['pageIndex'] === 2) {
                 echo "active-pagination";
               }
             ?>">2</div>
