@@ -148,7 +148,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
             <div class="panel__list">
               <?php
                 require("../../dbConnection.php");
-                $pagination = (int)$_SESSION['pageIndex'];
+                $pagination = (int)$_SESSION['pageIndex'] ?? 1;
                 if ($pagination === 1) {
                   $pagination = 0;
                 } else {
