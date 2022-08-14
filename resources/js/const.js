@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost/api';
+const { origin } = window.location
+const BASE_URL = `${origin}/api`
 
 var route = {
   checkAuth: `${BASE_URL}/check_auth.php`,
