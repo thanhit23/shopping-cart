@@ -76,7 +76,23 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                   <p class="price-new">đ<?php echo $price["price_new"] ?></p>
                 </div>
                 <div class="_product-percentage-discount">
-                  <p class="percentage-discount"><?php echo $percentage ?> giảm</p>
+                  <p class="percentage-discount"><?php echo $percentage ?>% giảm</p>
+                </div>
+              </div>
+              <div class="_product--transport">
+                <div class="--transport__title">
+                  <p>Vận chuyển</p>
+                </div>
+                <div class="--transport-wrapper ml-4 mb-4">
+                  <div class="--transport__infor">
+                    <i class="fa-solid fa-truck"></i>
+                    <p class="__transport-to">Vận chuyển tới</p>
+                    <p class="place">Ngũ Hành Sơn - Đà Nẵng</p>
+                  </div>
+                  <div class="--transport__fee">
+                    <p class="fee">Phí vận chuyển</p>
+                    <p class="select-transport">Không hổ trợ</p>
+                  </div>
                 </div>
               </div>
               <div class="_product--quantity-wrapper">
@@ -90,7 +106,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
                 </div>
                 <div class="_product--total-products">
                   <p class="total-products">1566</p>
-                  <p>sản phẩm</p>
+                  <p>sản phẩm có sẵn</p>
                 </div>
               </div>
             </div>
@@ -105,7 +121,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
       </div>
     </section>
     <?php require("../templates/includes/footer.php") ?>
-    <script src="/resources/js/product_detail.js"></script>
+    <script src="../../resources/js/product_detail.js"></script>
     <script src="../../resources/js/log_out.js"></script>
   </body>
 </html>

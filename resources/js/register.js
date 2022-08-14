@@ -191,12 +191,12 @@ submitElement.addEventListener('click', (e) => {
       formData.append('idProductAdded', idProductAdded)
       formData.append('quantity', quantity)
       fetch(route.addPreSelectProductsCart, { method: 'POST', body: formData })
-            .then(data => data.json())
-            .then(data => {
-              if (data.status === true) {
-                // window.location = 'http://localhost/home';
-              }
-            });
+        .then(data => data.json())
+        .then(data => {
+          if (data.status === true) {
+            window.location = `${origin}/home`;
+          }
+        });
     }
     
   }

@@ -1,4 +1,3 @@
-const selectedColor = document.querySelectorAll('.__color-item');
 const reduceBtn = document.querySelector('.btn-reduce');
 const increaseBtn = document.querySelector('.btn-increase');
 const inputSelected = document.querySelector('.input__product--selected');
@@ -12,7 +11,6 @@ const priceOf = document.querySelector('.price-of');
 const quantitySelected = document.querySelector('.input__product--selected');
 const imageItemShow = document.querySelector('.image__shown img').src;
 const addToCart = document.querySelector('.add--cart')
-const { origin } = window.location
 
 for (let i = 0; i < imageItem.length; i++) {
   imageItem[i].addEventListener('mousemove', () => {

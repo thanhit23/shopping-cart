@@ -63,6 +63,7 @@ img {
 }
 .product-assess-wrapper {
   display: flex;
+  align-items: center;
 }
 .product-assess-wrapper::after {
   content: " ";
@@ -71,15 +72,11 @@ img {
 .infor-product {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 250px;
 }
-
-
 .product--assess-container {
   display: flex;
   flex-direction: row;
-  margin: 15px 0;
+  margin: 5px 0 15px 0;
 }
 ._assess {
   color: #ed4d2d !important;
@@ -100,6 +97,7 @@ img {
 .product--price {
   display: flex;
   align-items: center;
+  margin: 10px 0;
 }
 ._product-price-of .price-of {
   margin: 0;
@@ -118,16 +116,46 @@ img {
   padding: 4px 8px;
   background-color: #ed4d2d;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 5px;
   font-weight: 700;
   text-transform: uppercase;
 }
+.--transport__infor {
+  align-items: center;
+}
+.--transport__infor p {
+  margin: 0 10px;
+}
+.--transport__infor .place {
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+}
+.--transport__fee .fee {
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+.--transport__fee .select-transport {
+  margin: 0 5px;
+}
+.select-transport,
+.--transport__fee .fee,
+.--transport__infor .__transport-to {
+  color: rgb(99, 99, 99);
+  margin-right: 10px;
+  text-transform: capitalize;
+}
 ._product--selected-color,
 ._product--total-products,
 ._selected-color,
-._product--cart_buy {
+._product--cart_buy,
+.--transport__infor,
+.--transport__fee,
+._product--transport {
   display: flex;
+}
+._product--total-products p {
+  margin: 0;
 }
 ._product--selected-color {
   margin: 20px 0;
@@ -181,11 +209,11 @@ img {
   width: 30px;
   height: 30px;
   font-size: 20px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc !important;
   background-color: #fff;
 }
 .input__product--selected {

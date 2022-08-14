@@ -46,6 +46,7 @@ header {
   right: 0;
   min-width: 105px;
   box-shadow: 0 0 10px #999;
+  z-index: 100;
 }
 .user--function::before {
   content: ' ';
